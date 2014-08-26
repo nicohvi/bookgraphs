@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe BooksController do
   before { @book1 = create :book }
-  before { @book2 = create :book}
+  before { @book2 = create :book }
 
   it 'Lists all books when the index action is invoked' do
     get :index
