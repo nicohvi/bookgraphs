@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827115744) do
+ActiveRecord::Schema.define(version: 20140827130127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20140827115744) do
     t.datetime "updated_at"
     t.string   "name"
     t.text     "description"
+    t.string   "svg"
   end
 
   create_table "plot_points", force: true do |t|

@@ -1,0 +1,10 @@
+%h1 Okay, create a new book bro
+
+= simple_form_for @book do |f|
+
+  = f.input :title
+  = f.input :author
+  = f.input :published
+  = f.input :length, label: 'Pages'
+
+  = f.submit

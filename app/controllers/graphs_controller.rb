@@ -1,7 +1,8 @@
 class GraphsController < ApplicationController
 
   def new
-    @graph = Graph.new
+    book = Book.find(params[:book_id])
+    @graph = book.graphs.build
   end
 
   def create
@@ -9,9 +10,9 @@ class GraphsController < ApplicationController
     @graph = book.graphs.create(graph_params)
 
     if @graph.valid?
-      redirect_to @graph
+      render partial: 'canvas'
     else
-      render 'new'
+      render json: { error: @graph.errors.messages.to_json }, status: 401
     end
   end
 
