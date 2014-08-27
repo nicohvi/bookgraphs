@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'books#index'
 
   concern :commentable do
-    resources :comments
+    resources :comments, only: [:create]
   end
 
   resources :graphs, concerns: :commentable, only: [:show, :destroy] do

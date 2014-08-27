@@ -11,7 +11,6 @@ class PlotPointsController < ApplicationController
     end
   end
 
-
   private
 
   def plot_point_params
