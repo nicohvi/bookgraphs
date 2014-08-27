@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
 
-  resources :books do
-    resources :graphs
+  root 'books#index'
+
+  concern :commentable do
+    resources :comments
   end
 
-  root 'books#index'
+  resources :graphs, concerns: :commentable, only: [:show, :destroy] do
+    resources :plot_points, concerns: :commentable
+  end
+
+  resources :books do
+    resources :graphs, except: [:show]
+  end
 
 end

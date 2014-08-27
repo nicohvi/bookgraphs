@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827070811) do
+ActiveRecord::Schema.define(version: 20140827115744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,12 +22,27 @@ ActiveRecord::Schema.define(version: 20140827070811) do
     t.integer  "length"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "author"
   end
+
+  create_table "comments", force: true do |t|
+    t.string   "name"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "graph_id"
+    t.integer  "plot_point_id"
+  end
+
+  add_index "comments", ["graph_id"], name: "index_comments_on_graph_id", using: :btree
+  add_index "comments", ["plot_point_id"], name: "index_comments_on_plot_point_id", using: :btree
 
   create_table "graphs", force: true do |t|
     t.integer  "book_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.text     "description"
   end
 
   create_table "plot_points", force: true do |t|
