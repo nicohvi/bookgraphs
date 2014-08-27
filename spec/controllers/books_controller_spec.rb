@@ -22,6 +22,12 @@ describe BooksController do
       expect(assigns(:book).graphs.length).to eq(5)
     end
 
+    it 'Deletes all graphs for a selected book when book is deleted' do
+      delete :destroy, id: @book1
+      expect(Graph.all).to be_empty
+      expect(response).to redirect_to root_path
+    end
+
   end
 
 end
