@@ -15,6 +15,11 @@ class PlotManager extends EventEmitter
       @showDialog(coordinates)
 
   showDialog: (coordinates) ->
-    Q( $.get "" )
+    unless @dialog
+      Q( $.get "/plot_point_form" ).then( (html) => @.emit 'plot:dialog', html ).done( => @initDialog() )
+
+
+  initDialog: ->
+    @dialog = $()
 
 @PlotManager = PlotManager

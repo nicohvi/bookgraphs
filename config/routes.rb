@@ -14,4 +14,6 @@ Rails.application.routes.draw do
     resources :graphs, except: [:show]
   end
 
+  get '/plot_point_form', to: 'plot_points#form', as: 'plot_dialog'
+
 end

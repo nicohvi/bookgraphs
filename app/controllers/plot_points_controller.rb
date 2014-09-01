@@ -11,6 +11,11 @@ class PlotPointsController < ApplicationController
     end
   end
 
+  def form
+    @plot_point = PlotPoint.new
+    render partial: 'form', layout: false
+  end
+
   private
 
   def plot_point_params

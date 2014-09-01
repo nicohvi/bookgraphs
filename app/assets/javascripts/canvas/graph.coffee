@@ -1,6 +1,7 @@
 class Graph
 
   constructor: (@id) ->
+    @el = $('#graph')
     #constants
     # FADE_TIMER = 500 #ms
     # FADING = false
@@ -20,6 +21,9 @@ class Graph
     @canvasManager.on 'event:dialog', (coordinates) =>
       @plotManager.emit 'dialog', coordinates
 
+    @plotManager.on 'plot:dialog', (html, callback) =>
+      @el.append(html)
+      callback()
 
   # initHandlers: ->
     # @canvasManager.on 'event dialog', (coordinates) =>
