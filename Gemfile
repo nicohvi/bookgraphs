@@ -13,7 +13,10 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+gem 'font-awesome-rails'
+
 gem 'haml-rails'
+gem 'bourbon'
 
 group :test, :development do
   gem 'spring'
@@ -39,4 +42,4 @@ end
 # Use unicorn as the app server
 gem 'unicorn'
 
-gem 'simple_form'
+gem 'paperclip'
