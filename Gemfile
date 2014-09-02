@@ -14,6 +14,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
 gem 'font-awesome-rails'
+gem 'nokogiri'
 
 gem 'haml-rails'
 gem 'bourbon'

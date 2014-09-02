@@ -81,9 +81,15 @@ input {
   font-size: 18px;
   font-family: consolas;
   @include transition(all .2s ease-in-out);
+
+  &.error {
+    border: 1px solid $fadedRed;
+  }
+
 }
 
 button {
+  @include transition(all .2s ease-in-out);
   border: none;
   box-shadow: none;
   color: white;

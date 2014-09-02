@@ -1,0 +1,15 @@
+@import 'colors';
+
+.notice {
+  font-family: 'open-sans';
+  font-size: 12px;
+  color: #fff;
+  text-transform: lowercase;
+  padding: 2px 4px;
+  border-radius: 4px;
+  margin-left: 10px;
+
+  &.notice-danger {
+    background: $fadedRed;
+  }
+}

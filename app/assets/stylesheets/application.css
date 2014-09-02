@@ -14,5 +14,6 @@
  *= require reset
  *= require layout
  *= require books
+ *= require labels
  *= require_self
  */
