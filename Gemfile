@@ -18,6 +18,7 @@ gem 'nokogiri'
 
 gem 'haml-rails'
 gem 'bourbon'
+gem 'paperclip'
 
 group :test, :development do
   gem 'spring'
