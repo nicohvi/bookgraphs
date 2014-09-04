@@ -18,9 +18,3 @@
       %li
         .label Length
         .info= @book.length
-
-  - @book.graphs.each do |graph|
-    %section.graph= graph
-
-%section#book-meta
-  = link_to 'Create a graph for this book?', new_book_graph_path(@book)

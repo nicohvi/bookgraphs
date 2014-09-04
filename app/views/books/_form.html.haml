@@ -2,6 +2,10 @@
 
   %section.image
     = f.file :cover
+    - if @book.cover.exists?
+      %section.cover
+        %label Current image
+        = image_tag(@book.cover.url)
 
   %section.inputs
     %section

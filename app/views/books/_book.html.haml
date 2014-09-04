@@ -16,3 +16,6 @@
       %li
         .label Length
         .info= book.length
+  %section.tools
+    = link_to edit_book_path(book) do
+      %i.fa.fa-wrench
