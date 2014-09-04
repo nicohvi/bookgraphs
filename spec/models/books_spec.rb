@@ -18,6 +18,7 @@ describe Book do
       expect{ book.update_attributes!(cover: valid_attachment) }.to_not raise_error
       expect(book.cover.path).to eq(valid_path)
     end
+
   end
 
   after :all do
