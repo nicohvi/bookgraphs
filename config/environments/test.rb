@@ -31,6 +31,9 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
+  Paperclip.options[:command_path] = "/usr/local/bin/"
+  config.paperclip.default_options[:path] = ':rails_root/spec/public/:filename'
+
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 

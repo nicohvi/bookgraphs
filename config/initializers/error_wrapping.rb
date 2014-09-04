@@ -7,7 +7,7 @@ ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
       if node.name == 'label'
         span = Nokogiri::XML::Node.new "span", doc
         span['class'] = "notice notice-danger"
-        span.content = instance.error_message.uniq.join(', ')
+        span.content = instance.error_message.first
         node.add_child(span)
       end
       unless node['type'] == 'hidden'

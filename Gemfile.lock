@@ -28,6 +28,9 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    aws-sdk (1.41.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     bourbon (3.2.1)
       sass (~> 3.2)
       thor
@@ -206,6 +209,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk
   bourbon
   byebug
   coffee-rails (~> 4.0.0)

@@ -45,3 +45,4 @@ end
 gem 'unicorn'
 
 gem 'paperclip'
+gem 'aws-sdk'

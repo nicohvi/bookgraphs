@@ -1,0 +1,14 @@
+= label_form_for @book, html: { multipart: true } do |f|
+
+  %section.image
+    = f.file :cover
+
+  %section.inputs
+    %section
+      = f.input :title
+      = f.input :author
+    %section.right
+      = f.input :published
+      = f.input :length
+
+  = f.submit icon: 'paper-plane', text: "#{@book.new_record? ? 'create' : 'update'} book"

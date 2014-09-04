@@ -16,6 +16,12 @@ module FormHelper
       end
     end
 
+    def file(attribute, options={})
+      content_tag(:div, class: 'input') do
+        label(attribute) + file_field(attribute, options)
+      end
+    end
+
     def submit(*args)
       options = args.extract_options!
 

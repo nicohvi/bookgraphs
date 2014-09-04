@@ -18,5 +18,16 @@ module Bookgraphs
       g.helper          false
     end
 
+    # paperclip configuration
+    # config/environments/production.rb
+    config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_credentials => {
+        :bucket => config.secrets.s3.bucket,
+        :access_key_id => config.secrets.s3.access_key_id,
+        :secret_access_key => config.secrets.s3.access_key
+      }
+    }
+
   end
 end

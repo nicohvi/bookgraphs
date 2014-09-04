@@ -1,11 +1,23 @@
 %h1= @book.title
 
 %section#book
-
-  %ul
-    %li= "Author: #{@book.author}"
-    %li= "Published: #{@book.published}"
-    %li= "Length: #{@book.length}"
+  %aside
+    = image_tag(@book.cover.path)
+  %section.meta
+    %ul
+      %li
+        .label Title
+        .info= @book.title
+      %li
+        .label Author
+        .info= @book.author
+    %ul
+      %li
+        .label Published
+        .info= @book.published
+      %li
+        .label Length
+        .info= @book.length
 
   - @book.graphs.each do |graph|
     %section.graph= graph
