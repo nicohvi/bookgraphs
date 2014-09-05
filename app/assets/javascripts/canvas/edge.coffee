@@ -1,14 +1,14 @@
 class Edge
 
   constructor: (options, canvas) ->
-    @path = canvas.path @getPath(options.startEvent, options.stopEvent)
+    @path = canvas.path @getPath(options.startPoint, options.stopPoint)
     @setupPath()
-    @startEvent = options.startEvent
-    @stopEvent = options.stopEvent
+    @startPoint = options.startPoint
+    @stopPoint = options.stopPoint
 
-  getPath: (startEvent, stopEvent) ->
-    fromNodeBBox = startEvent.node.getBBox()
-    toNodeBBox = stopEvent.node.getBBox()
+  getPath: (startPoint, stopPoint) ->
+    fromNodeBBox = startPoint.node.getBBox()
+    toNodeBBox = stopPoint.node.getBBox()
     "M#{fromNodeBBox.x + fromNodeBBox.width/2},#{fromNodeBBox.y + fromNodeBBox.height/2}
       L#{toNodeBBox.x + toNodeBBox.width/2}, #{toNodeBBox.y + toNodeBBox.height/2}"
 

@@ -12,6 +12,6 @@ class PlotPoint extends EventEmitter
     @node.drag()
 
     eve.on "snap.drag.move.#{@node.id}", =>
-      @.emit 'dragging', @node
+      @.emit 'dragging'
 
 @PlotPoint = PlotPoint

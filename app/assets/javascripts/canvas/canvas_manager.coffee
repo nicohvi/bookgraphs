@@ -28,21 +28,21 @@ class CanvasManager extends EventEmitter
   _addHandler: (plotPoint) ->
     plotPoint.on 'dragging', =>
       for edge in @timeline
-        @_removeEdge(edge, plotPoint) if edge.startPoint == plotPoint|| edge.endPoint == plotPoint
+        if edge.startPoint == plotPoint
+          @_removeEdge(edge, plotPoint, true)
+        else if edge.stopPoint == plotPoint
+          @_removeEdge(edge, plotPoint, false)
 
   _addEdge: (start, stop) ->
     options =
-      startEvent: start
-      stopEvent: stop
+      startPoint: start
+      stopPoint: stop
     edge = new Edge(options, @canvas)
 
     @timeline.push(edge)
 
-  _removeEdge: (edge, plotPoint) ->
-    if plotPoint == edge.startPoint
-      @_addEdge(plotpoint, edge.stopPoint)
-    else if plotPoint == edge.stopPoint
-      @_addEdge(edge.startPoint, plotPoint)
+  _removeEdge: (edge, plotPoint, start) ->
+    if start then @_addEdge(plotPoint, edge.stopPoint) else @_addEdge(edge.startPoint, plotPoint)
     @timeline.splice(@timeline.indexOf(edge), 1)
     edge.delete()
 
