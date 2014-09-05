@@ -5,5 +5,5 @@
 //= require_tree ./canvas
 
 $(document).ready(function() {
-  window.graph = new Graph($('#graph').data('id'));
+  window.graphForm = new GraphForm($('#graph_form').data('id'));
 })

@@ -1,17 +1,11 @@
 class CanvasManager extends EventEmitter
 
   constructor: (el) ->
-    @bookEvents = []
+    @plotPoints = []
     @timeline = []
     @mode = 'EDIT'
     @canvas = Snap(el)
-    @initEvents()
     @initHandlers()
-
-  initEvents: ->
-    @canvas.dblclick (event) =>
-      return if @mode == 'PREVIEW'
-      @.emit 'event:dialog', { x: event.x, y: event.y }
 
   initHandlers: ->
     @.on 'preview', =>
@@ -20,18 +14,21 @@ class CanvasManager extends EventEmitter
     @.on 'edit', =>
       @mode = 'EDIT'
 
-  addBookEvent: (options) ->
-    event = new BookEvent(options, @canvas)
-    @_addHandler(event)
-    @bookEvents.push(event)
+    @.on 'plot_point', (plotPoint) =>
+      @addPlotPoint(plotPoint)
+
+  addPlotPoint: (options) ->
+    plotPoint = new PlotPoint(options, @canvas)
+    @_addHandler(plotPoint)
+    @plotPoints.push(plotPoint)
 
     # timeline management
-    @_addEdge(@bookEvents[@bookEvents.length-2], event) if @bookEvents.length > 1
+    @_addEdge(@plotPoints[@plotPoints.length-2], plotPoint) if @plotPoints.length > 1
 
-  _addHandler: (bookEvent) ->
-    bookEvent.on 'dragging', =>
+  _addHandler: (plotPoint) ->
+    plotPoint.on 'dragging', =>
       for edge in @timeline
-        @_removeEdge(edge, bookEvent) if edge.startEvent == bookEvent|| edge.stopEvent == bookEvent
+        @_removeEdge(edge, plotPoint) if edge.startPoint == plotPoint|| edge.endPoint == plotPoint
 
   _addEdge: (start, stop) ->
     options =
@@ -41,11 +38,11 @@ class CanvasManager extends EventEmitter
 
     @timeline.push(edge)
 
-  _removeEdge: (edge, bookEvent) ->
-    if bookEvent == edge.startEvent
-      @_addEdge(bookEvent, edge.stopEvent)
-    else if bookEvent == edge.stopEvent
-      @_addEdge(edge.startEvent, bookEvent)
+  _removeEdge: (edge, plotPoint) ->
+    if plotPoint == edge.startPoint
+      @_addEdge(plotpoint, edge.stopPoint)
+    else if plotPoint == edge.stopPoint
+      @_addEdge(edge.startPoint, plotPoint)
     @timeline.splice(@timeline.indexOf(edge), 1)
     edge.delete()
 

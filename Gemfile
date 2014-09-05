@@ -19,6 +19,7 @@ gem 'nokogiri'
 gem 'haml-rails'
 gem 'bourbon'
 gem 'paperclip'
+gem 'aws-sdk'
 
 group :test, :development do
   gem 'spring'
@@ -43,6 +44,3 @@ end
 
 # Use unicorn as the app server
 gem 'unicorn'
-
-gem 'paperclip'
-gem 'aws-sdk'

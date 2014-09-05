@@ -22,17 +22,31 @@ module FormHelper
       end
     end
 
+    def text(attribute, options={})
+      content_tag(:div, class:'input') do
+        label(attribute) + text_area(attribute, options)
+      end
+    end
+
     def submit(*args)
       options = args.extract_options!
 
       content_tag(:button, type: 'submit') do
-        content_tag(:i, "", class: "fa fa-#{options[:icon]} fa-2x") +
-        content_tag(:span) do
-          options[:text]
-        end
-      end
 
-    end
+        if options[:icon]
+          content_tag(:i, "", class: "fa fa-#{options[:icon]} fa-2x") +
+          content_tag(:span) do
+            options[:text]
+          end
+        else
+          content_tag(:span) do
+            options[:text]
+          end
+        end
+
+      end # button content
+
+    end # submit
 
   end
 

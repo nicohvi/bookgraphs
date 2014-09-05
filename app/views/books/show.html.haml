@@ -1,20 +1,24 @@
 %h1= @book.title
 
 %section#book
+
+  %section#graph
+
   %aside
     = image_tag(@book.cover.url)
   %section.meta
     %ul
       %li
-        .label Title
-        .info= @book.title
-      %li
         .label Author
         .info= @book.author
-    %ul
       %li
         .label Published
         .info= @book.published
+    %ul
       %li
         .label Length
         .info= @book.length
+
+%section
+  = link_to new_book_graph_path(@book) do
+    %i.fa.fa-line-chart.fa-2x

@@ -1,3 +1,5 @@
-= simple_form_for :plot_point do |f|
+= label_form_for :plot_point, html: { id: 'plot_point_form' }, remote: true  do |f|
   = f.input :name
-  = f.input :description
+  = f.text :description
+
+  = f.submit text: 'Create plot point'

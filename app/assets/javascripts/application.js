@@ -14,4 +14,3 @@
 //= require jquery_ujs
 //= require q
 //
-//= require graph_form

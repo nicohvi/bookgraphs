@@ -1,3 +1,5 @@
-%h1 Yeah bruv, create dat graph
+%section#graph_form{ data: { id:  @graph.id  } }
 
-= render 'form'
+  %svg#canvas
+
+= javascript_include_tag 'canvas'

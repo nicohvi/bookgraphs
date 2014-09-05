@@ -12,39 +12,50 @@
   display: flex;
   flex: 1;
   margin-bottom: 30px;
+  padding: 30px;
+}
 
-  aside {
-    width: 20%;
-  }
+#book .meta {
+  flex-direction: row;
+}
 
-  .meta {
-    display: flex;
-    flex: 1;
-  }
+.title {
+  font-size: 26px;
+  margin-top: 20px;
+}
 
-  ul {
-    flex: 1;
-  }
+aside {
+  width: 20%;
+}
 
-  li {
-    margin-bottom: 15px;
-  }
+.meta {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
 
-  .info {
-    margin-left: 15px;
-  }
+ul {
+  flex: 1;
+}
 
-  &:not(:last-of-type) {
-    border-bottom: 1px solid #ddd;
-  }
+li {
+  margin-bottom: 15px;
+}
 
-  .tools a{
-    opacity: .6;
-    @include transition(all .2s ease-in-out);
+.info {
+  margin-left: 15px;
+}
 
-    &:hover {
-      opacity: 1;
-    }
+.book:not(:last-of-type) {
+  border-bottom: 1px solid #ddd;
+}
+
+.tools a{
+  opacity: .6;
+  @include transition(all .2s ease-in-out);
+
+  &:hover {
+    opacity: 1;
   }
 }
 
@@ -91,20 +102,6 @@ form {
   }
 }
 
-input {
-  padding: 12px 18px 12px 18px;
-  border: 1px solid rgba(0,0,0,0.12);
-  flex: 1;
-  font-size: 18px;
-  font-family: consolas;
-  @include transition(all .2s ease-in-out);
-
-  &.error {
-    border: 1px solid $fadedRed;
-  }
-
-}
-
 .input {
   display: flex;
   margin-bottom: 15px;
@@ -127,10 +124,13 @@ button {
   cursor: pointer;
   font-family: consolas;
 
+  i {
+    margin-right: 25px;
+  }
+
   span {
     font-size: 20px;
     text-transform: lowercase;
-    margin-left: 25px;
   }
 
   &:hover {
