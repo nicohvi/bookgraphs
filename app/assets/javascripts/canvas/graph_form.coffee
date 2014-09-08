@@ -4,13 +4,14 @@ class GraphForm
     @el = $('#graph_form')
     @canvasManager = new CanvasManager('#canvas')
     @plotPointForm = new PlotPointForm('#plot_point_form')
-    @modeToggler = $('input:radio')
+    @modeToggler = $('.radio-button')
     @initBindings()
     @initHandlers()
+    @ENV = 'DEBUG'
 
   initBindings: ->
     @modeToggler.on 'change', =>
-      value = @modeToggler.val()
+      value = @modeToggler.data('value')
       @canvasManager.trigger(value)
 
     $('#canvas').on 'dblclick', (event) =>
@@ -24,7 +25,7 @@ class GraphForm
     $(window).on 'keydown', (event) =>
       if event.which == 27 then @plotPointForm.trigger 'dialog:close'
 
-    $('#graph_form').on 'contextmenu', (event) ->
+    $('#canvas').on 'contextmenu', (event) ->
       event.preventDefault()
 
 

@@ -33,6 +33,11 @@ class CanvasManager extends EventEmitter
         else if edge.stopPoint == plotPoint
           @_removeEdge(edge, plotPoint, false)
 
+    plotPoint.on 'hover', =>
+      return false unless @mode == 'PREVIEW'
+      console.log "name: #{plotPoint.name}"
+      console.log "desc: #{plotPoint.desc}"
+
     plotPoint.on 'delete', =>
       console.log 'yeah yeah'
 

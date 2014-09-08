@@ -1,5 +1,11 @@
 module FormHelper
 
+  def radio(value, icon)
+    content_tag(:section, class: 'radio-button', data: { value: value } ) do
+      content_tag(:i, "", class: "fa fa-#{icon}") + content_tag(:span, value)
+    end
+  end
+
   def label_form_for(object, *args, &block)
     options = args.extract_options!
     form_for(object, *(args << options.merge(builder: LabelFormBuilder)), &block)

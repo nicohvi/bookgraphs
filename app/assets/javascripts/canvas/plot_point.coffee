@@ -10,12 +10,14 @@ class PlotPoint extends EventEmitter
     @node.attr
       fill: 'red'
     @node.drag()
-
+    @node.hover(
+      => @.emit 'hover',
+      => @.emit 'hover_out'
+    )
     eve.on "snap.drag.move.#{@node.id}", =>
       @.emit 'dragging'
 
     @node.mousedown (event) =>
-      console.log event.which
       if event.which == 3 # right click
         @.emit 'menu' # show custom context menu on right-click
 

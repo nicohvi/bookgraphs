@@ -17,7 +17,7 @@ class PlotPointForm extends EventEmitter
       $('.notice').remove()
       plot_point =
         name: @el.find('input[type=text]').val()
-        description: @el.find('textarea').val()
+        desc: @el.find('textarea').val()
         x: @el.css 'left'
         y: @el.css 'top'
 
@@ -37,6 +37,7 @@ class PlotPointForm extends EventEmitter
     @el.hide()
 
   _validate: (plot_point)->
+    return true if graphForm.ENV = 'debug'
     if plot_point.name.length < 5
       @_error('name')
       return false

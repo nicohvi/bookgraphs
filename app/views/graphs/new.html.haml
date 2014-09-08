@@ -1,5 +1,9 @@
 %section#graph_form{ data: { id:  @graph.id  } }
 
+  %section.mode
+    = radio 'edit', 'bolt'
+    = radio 'preview', 'plug'
+
   %svg#canvas
   = render 'plot_points/form'
 
