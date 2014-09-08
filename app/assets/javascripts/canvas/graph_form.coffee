@@ -24,6 +24,9 @@ class GraphForm
     $(window).on 'keydown', (event) =>
       if event.which == 27 then @plotManager.trigger 'dialog:close'
 
+    $('#graph_form').on 'contextmenu', (event) ->
+      event.preventDefault()
+
 
   initHandlers: ->
     @plotManager.on 'dialog:fetched', (html) =>

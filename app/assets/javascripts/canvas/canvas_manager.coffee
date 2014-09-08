@@ -33,6 +33,9 @@ class CanvasManager extends EventEmitter
         else if edge.stopPoint == plotPoint
           @_removeEdge(edge, plotPoint, false)
 
+    plotPoint.on 'delete', =>
+      console.log 'yeah yeah'
+
   _addEdge: (start, stop) ->
     options =
       startPoint: start
