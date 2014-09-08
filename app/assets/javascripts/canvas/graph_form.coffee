@@ -3,7 +3,7 @@ class GraphForm
   constructor: (@id) ->
     @el = $('#graph_form')
     @canvasManager = new CanvasManager('#canvas')
-    @plotManager = new PlotManager()
+    @plotPointForm = new PlotPointForm('#plot_point_form')
     @modeToggler = $('input:radio')
     @initBindings()
     @initHandlers()
@@ -19,20 +19,20 @@ class GraphForm
         x: event.pageX - $canvas.left
         y: event.pageY - $canvas.top
 
-      @plotManager.trigger 'dialog:show', [coordinates]
+      @plotPointForm.trigger 'dialog:show', [coordinates]
 
     $(window).on 'keydown', (event) =>
-      if event.which == 27 then @plotManager.trigger 'dialog:close'
+      if event.which == 27 then @plotPointForm.trigger 'dialog:close'
 
     $('#graph_form').on 'contextmenu', (event) ->
       event.preventDefault()
 
 
   initHandlers: ->
-    @plotManager.on 'dialog:fetched', (html) =>
+    @plotPointForm.on 'dialog:fetched', (html) =>
       @el.append(html)
 
-    @plotManager.on 'plot_point:new', (plot_point) =>
+    @plotPointForm.on 'plot_point:new', (plot_point) =>
       @canvasManager.trigger 'plot_point', [plot_point]
 
 @GraphForm = GraphForm
