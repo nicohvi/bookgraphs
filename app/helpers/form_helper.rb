@@ -1,7 +1,7 @@
 module FormHelper
 
-  def radio(value, icon)
-    content_tag(:section, class: 'radio-button', data: { value: value } ) do
+  def radio(value, icon, classes=nil)
+    content_tag(:section, class: "#{classes} radio-button", data: { value: value } ) do
       content_tag(:i, "", class: "fa fa-#{icon}") + content_tag(:span, value)
     end
   end

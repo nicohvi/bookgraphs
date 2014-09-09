@@ -24,6 +24,10 @@
       background: $fadedBlue;
     }
 
+    &.active {
+      background: $fadedBlue;
+    }
+
   }
 
 }
@@ -54,4 +58,44 @@
       font-size: 14px;
     }
   }
+}
+
+#plot_point {
+  width: 250px;
+  position: absolute;
+  display: none;
+  background: $offWhite;
+  box-shadow: 0 2px 4px #e6e6e6;
+  @include transition(all .2s ease-in-out);
+  border-radius: 3px;
+  border: 1px solid #ddd;
+
+  .plot-point-container {
+    padding: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  section {
+    flex: 1;
+  }
+
+  &:hover {
+    background: $white;
+  }
+
+  .name {
+    font-family: 'ostrich-sans-bold';
+    font-size: 1.5em;
+    line-height: 1.5;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .desc {
+    font-size: .9em;
+  }
+
 }

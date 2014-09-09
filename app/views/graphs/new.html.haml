@@ -1,10 +1,18 @@
 %section#graph_form{ data: { id:  @graph.id  } }
 
   %section.mode
-    = radio 'edit', 'bolt'
+    = radio 'edit', 'bolt', 'active'
     = radio 'preview', 'plug'
 
   %svg#canvas
   = render 'plot_points/form'
+
+  %section#plot_point
+    %section.plot-point-container
+      %section.name
+      %section.desc
+      .ribbon-wrapper
+        .ribbon SAD
+
 
 = javascript_include_tag 'canvas'

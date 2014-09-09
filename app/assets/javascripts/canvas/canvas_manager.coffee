@@ -10,9 +10,11 @@ class CanvasManager extends EventEmitter
   initHandlers: ->
     @.on 'preview', =>
       @mode = 'PREVIEW'
+      @_previewNodes()
 
     @.on 'edit', =>
       @mode = 'EDIT'
+      @_editNodes()
 
     @.on 'plot_point', (plotPoint) =>
       @addPlotPoint(plotPoint)
@@ -27,6 +29,7 @@ class CanvasManager extends EventEmitter
 
   _addHandler: (plotPoint) ->
     plotPoint.on 'dragging', =>
+      return false if @mode == 'PREVIEW'
       for edge in @timeline
         if edge.startPoint == plotPoint
           @_removeEdge(edge, plotPoint, true)
@@ -35,8 +38,7 @@ class CanvasManager extends EventEmitter
 
     plotPoint.on 'hover', =>
       return false unless @mode == 'PREVIEW'
-      console.log "name: #{plotPoint.name}"
-      console.log "desc: #{plotPoint.desc}"
+      @.emit 'plot_point:show', plotPoint
 
     plotPoint.on 'delete', =>
       console.log 'yeah yeah'
@@ -53,6 +55,14 @@ class CanvasManager extends EventEmitter
     if start then @_addEdge(plotPoint, edge.stopPoint) else @_addEdge(edge.startPoint, plotPoint)
     @timeline.splice(@timeline.indexOf(edge), 1)
     edge.delete()
+
+  _previewNodes: ->
+    for plotPoint in @plotPoints
+      plotPoint.preview()
+
+  _editNodes: ->
+    for plotPoint in @plotPoints
+      plotPoint.edit()
 
 
 @CanvasManager = CanvasManager

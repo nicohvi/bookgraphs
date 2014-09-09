@@ -2,20 +2,25 @@ class GraphForm
 
   constructor: (@id) ->
     @el = $('#graph_form')
+    @plotPointBox = new PlotPointBox('#plot_point')
     @canvasManager = new CanvasManager('#canvas')
     @plotPointForm = new PlotPointForm('#plot_point_form')
-    @modeToggler = $('.radio-button')
     @initBindings()
     @initHandlers()
     @ENV = 'DEBUG'
 
   initBindings: ->
-    @modeToggler.on 'change', =>
-      value = @modeToggler.data('value')
+    $('.radio-button').on 'click', (event) =>
+      @plotPointBox.hide()
+      $radio = $(event.delegateTarget)
+      value = $radio.data('value')
       @canvasManager.trigger(value)
+      $('.active').removeClass('active')
+      $radio.addClass('active')
 
     $('#canvas').on 'dblclick', (event) =>
-      $canvas = $(event.target).offset()
+      return false unless @canvasManager.mode == 'EDIT'
+      $canvas = $('#canvas').offset()
       coordinates =
         x: event.pageX - $canvas.left
         y: event.pageY - $canvas.top
@@ -28,12 +33,11 @@ class GraphForm
     $('#canvas').on 'contextmenu', (event) ->
       event.preventDefault()
 
-
   initHandlers: ->
-    @plotPointForm.on 'dialog:fetched', (html) =>
-      @el.append(html)
+    @plotPointForm.on 'plot_point:new', (plotPoint) =>
+      @canvasManager.trigger 'plot_point', [plotPoint]
 
-    @plotPointForm.on 'plot_point:new', (plot_point) =>
-      @canvasManager.trigger 'plot_point', [plot_point]
+    @canvasManager.on 'plot_point:show', (plotPoint) =>
+      @plotPointBox.show(plotPoint)
 
 @GraphForm = GraphForm

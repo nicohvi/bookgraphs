@@ -45,7 +45,7 @@ a {
 
 
 input, textarea {
-  padding: 12px 18px 12px 18px;
+  padding: 12px 10px 12px 10px;
   border: 1px solid rgba(0,0,0,0.12);
   flex: 1;
   font-size: 18px;
@@ -56,4 +56,30 @@ input, textarea {
     border: 1px solid $fadedRed;
   }
 
+}
+
+.ribbon-wrapper {
+  width: 85px;
+  height: 85px;
+  overflow: hidden;
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  display: block;
+
+  .ribbon {
+    font-size: .8em;
+    font-weight: 800;
+    display: block;
+    text-align: center;
+    @include transform(rotate(45deg));
+    position: relative;
+    padding: 2px 7px;
+    left: -5px;
+    top: 15px;
+    width: 120px;
+    background-color: $fadedBlue;
+    color: white;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  }
 }

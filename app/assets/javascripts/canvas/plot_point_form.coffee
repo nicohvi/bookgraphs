@@ -18,8 +18,8 @@ class PlotPointForm extends EventEmitter
       plot_point =
         name: @el.find('input[type=text]').val()
         desc: @el.find('textarea').val()
-        x: @el.css 'left'
-        y: @el.css 'top'
+        x: parseInt(@el.css 'left')
+        y: parseInt(@el.css 'top')
 
       if @_validate(plot_point)
         @.emit 'plot_point:new', plot_point
