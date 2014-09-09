@@ -11,7 +11,8 @@ class PlotPoint extends EventEmitter
 
   nodeSetup: ->
     @node.attr
-      fill: 'red'
+      fill: '#3984a7'
+      'fill-opacity': 0.8
 
     # @node.mousedown (event) =>
       # if event.which == 3 # right click

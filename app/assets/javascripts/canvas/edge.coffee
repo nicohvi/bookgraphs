@@ -23,7 +23,8 @@ class Edge
     @path.attr
       fill: 'transparent'
       stroke: 'black'
-      strokeWidth: 3
+      strokeWidth: 2
+      'stroke-opacity': 0.8
     @path.toBack()
 
   delete: ->
