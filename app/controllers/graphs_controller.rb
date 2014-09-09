@@ -1,8 +1,8 @@
 class GraphsController < ApplicationController
 
   def new
-    book = Book.find(params[:book_id])
-    @graph = book.graphs.build
+    @book = Book.find(params[:book_id])
+    @graph = @book.graphs.build
   end
 
   def create

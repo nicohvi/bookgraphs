@@ -25,7 +25,10 @@ class PlotPoint extends EventEmitter
 
   preview: ->
     @node.undrag()
-    @node.hover( => @.emit 'hover' )
+    @node.hover(
+      => @.emit 'hover',
+      => @.emit 'hover_out', event
+    )
 
   edit: ->
     @node.unhover()

@@ -2,17 +2,16 @@ class PlotPointBox extends EventEmitter
 
   constructor: (el) ->
     @el = $(el)
-    @transition = false
     @initBindings()
 
   initBindings: ->
-    @el.on 'mouseout', (event) =>
-      @hide() if event.toElement.tagName == 'svg'
+    @el.on 'mouseout', =>
+      @timer()
+
+    @el.on 'mouseover', =>
+      clearTimeout(@timeoutID)
 
   show: (plotPoint) ->
-    return if @transition
-    @transition = true
-
     @el.find('.name').text(plotPoint.name)
     if plotPoint.desc.length != 0
       @el.find('.desc').show()
@@ -23,12 +22,15 @@ class PlotPointBox extends EventEmitter
       left: plotPoint.x
       top: plotPoint.y + $('.mode').height()
     @el.show()
-    @transition = false
+
+  timer: ->
+    clearTimeout(@timeoutID)
+    @timeoutID = setTimeout( => @hide(),
+    2000)
 
   hide: ->
+    @el.hide()
     @el.find('.name').text('')
     @el.find('.desc').text('')
-    @el.hide()
-    @transition = false
 
 @PlotPointBox = PlotPointBox

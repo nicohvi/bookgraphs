@@ -2,6 +2,7 @@ class GraphForm
 
   constructor: (@id) ->
     @el = $('#graph_form')
+    @canvas = $('#canvas')
     @plotPointBox = new PlotPointBox('#plot_point')
     @canvasManager = new CanvasManager('#canvas')
     @plotPointForm = new PlotPointForm('#plot_point_form')
@@ -18,9 +19,9 @@ class GraphForm
       $('.active').removeClass('active')
       $radio.addClass('active')
 
-    $('#canvas').on 'dblclick', (event) =>
+    @canvas.on 'dblclick', (event) =>
       return false unless @canvasManager.mode == 'EDIT'
-      $canvas = $('#canvas').offset()
+      $canvas = @canvas.offset()
       coordinates =
         x: event.pageX - $canvas.left
         y: event.pageY - $canvas.top
@@ -28,9 +29,11 @@ class GraphForm
       @plotPointForm.trigger 'dialog:show', [coordinates]
 
     $(window).on 'keydown', (event) =>
-      if event.which == 27 then @plotPointForm.trigger 'dialog:close'
+      if event.which == 27
+        @plotPointForm.trigger 'dialog:close'
+        @plotPointBox.hide()
 
-    $('#canvas').on 'contextmenu', (event) ->
+    @canvas.on 'contextmenu', (event) ->
       event.preventDefault()
 
   initHandlers: ->
@@ -39,5 +42,8 @@ class GraphForm
 
     @canvasManager.on 'plot_point:show', (plotPoint) =>
       @plotPointBox.show(plotPoint)
+
+    @canvasManager.on 'plot_point:hide', (event) =>
+      @plotPointBox.timer() if event.toElement.tagName == 'svg'
 
 @GraphForm = GraphForm

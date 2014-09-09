@@ -40,6 +40,9 @@ class CanvasManager extends EventEmitter
       return false unless @mode == 'PREVIEW'
       @.emit 'plot_point:show', plotPoint
 
+    plotPoint.on 'hover_out', =>
+      @.emit 'plot_point:hide', event
+
     plotPoint.on 'delete', =>
       console.log 'yeah yeah'
 

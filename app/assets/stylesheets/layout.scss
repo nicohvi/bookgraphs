@@ -10,12 +10,12 @@
 $black: rgba(0,0,0,.8);
 
 body {
+  background: $white;
   color: $black;
   font-family: 'open-sans', 'sans serif';
   text-rendering: optimizeLegibility;
-  background: white;
-  max-width: 820px;
-  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
   font-size: 16px;
 }
 
@@ -28,13 +28,15 @@ h1 {
 }
 
 header {
+  background: $darkGray;
   border-bottom: 1px solid #ddd;
-  margin-bottom: 50px;
   display: flex;
   align-items: center;
+  justify-content: center;
 
   a {
     margin-left: 15px;
+    color: $white;
   }
 }
 
@@ -48,8 +50,7 @@ input, textarea {
   padding: 12px 10px 12px 10px;
   border: 1px solid rgba(0,0,0,0.12);
   flex: 1;
-  font-size: 18px;
-  font-family: consolas;
+  font-size: 1em;
   @include transition(all .2s ease-in-out);
 
   &.error {
