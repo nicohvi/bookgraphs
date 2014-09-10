@@ -20,7 +20,7 @@ class PlotPointBox extends EventEmitter
       @el.find('.desc').hide()
     @el.css
       left: plotPoint.x
-      top: plotPoint.y + $('.mode').height()
+      top: plotPoint.y + $('.mode').outerHeight()
     @el.show()
 
   timer: ->

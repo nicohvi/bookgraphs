@@ -5,8 +5,7 @@
 %section#graph_form{ data: { id:  @graph.id  } }
 
   %section.mode
-    = radio 'edit', 'bolt', 'active'
-    = radio 'preview', 'plug'
+    = switch({ on: 'preview', off: 'edit' }, { on: 'plug', off: 'wrench' })
 
   %svg#canvas
   = render 'plot_points/form'

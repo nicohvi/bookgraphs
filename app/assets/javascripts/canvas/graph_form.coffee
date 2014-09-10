@@ -6,18 +6,19 @@ class GraphForm
     @plotPointBox = new PlotPointBox('#plot_point')
     @canvasManager = new CanvasManager('#canvas')
     @plotPointForm = new PlotPointForm('#plot_point_form')
+    @switch = $('.switch')
     @initBindings()
     @initHandlers()
     @ENV = 'DEBUG'
 
   initBindings: ->
-    $('.radio-button').on 'click', (event) =>
-      @plotPointBox.hide()
-      $radio = $(event.delegateTarget)
-      value = $radio.data('value')
-      @canvasManager.trigger(value)
+    @switch.on 'click', =>
       $('.active').removeClass('active')
-      $radio.addClass('active')
+      @plotPointBox.hide()
+      @switch.toggleClass('on')
+      if @switch.hasClass('on') then value = 'preview' else value = 'edit'
+      $(".#{value}").addClass('active')
+      @canvasManager.trigger(value)
 
     @canvas.on 'dblclick', (event) =>
       return false unless @canvasManager.mode == 'EDIT'
