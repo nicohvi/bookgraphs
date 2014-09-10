@@ -15,6 +15,7 @@
  *= require layout
  *= require books
  *= require graphs
- *= require labels
+ *= require plot_points
+ *= require custom
  *= require_self
  */

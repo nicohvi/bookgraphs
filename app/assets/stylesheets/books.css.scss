@@ -28,7 +28,7 @@ aside {
   width: 20%;
 }
 
-.meta {
+.book meta {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -57,11 +57,6 @@ li {
   &:hover {
     opacity: 1;
   }
-}
-
-form {
-  display: flex;
-  flex-direction: column;
 }
 
 .image {
@@ -93,40 +88,4 @@ form {
       margin-left: 25px;
     }
   }
-}
-
-.input {
-  display: flex;
-  margin-bottom: 15px;
-  flex-direction: column;
-
-  label {
-    margin-bottom: 12px;
-  }
-}
-
-button {
-  @include transition(all .2s ease-in-out);
-  border: none;
-  box-shadow: none;
-  color: white;
-  background: $blue;
-  border-radius: 3px;
-  flex: 1;
-  padding: 20px 0;
-  cursor: pointer;
-
-  i {
-    margin-right: 25px;
-  }
-
-  &:hover {
-    background: $fadedBlue;
-  }
-
-  span {
-    font-size: 20px;
-    text-transform: lowercase;
-  }
-
 }

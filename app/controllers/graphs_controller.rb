@@ -6,14 +6,15 @@ class GraphsController < ApplicationController
   end
 
   def create
-    book = Book.find(params[:book_id])
-    @graph = book.graphs.create(graph_params)
+    byebug
+    # book = Book.find(params[:book_id])
+    # @graph = book.graphs.create(graph_params)
 
-    if @graph.valid?
-      render partial: 'canvas'
-    else
-      render json: { error: @graph.errors.messages.to_json }, status: 401
-    end
+    # if @graph.valid?
+      # render partial: 'canvas'
+    # else
+      # render json: { error: @graph.errors.messages.to_json }, status: 401
+    # end
   end
 
   def show

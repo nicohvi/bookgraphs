@@ -27,6 +27,9 @@ class CanvasManager extends EventEmitter
     # timeline management
     @_addEdge(@plotPoints[@plotPoints.length-2], plotPoint) if @plotPoints.length > 1
 
+  getPlotPoints: ->
+    @plotPoints
+
   _addHandler: (plotPoint) ->
     plotPoint.on 'dragging', =>
       return false if @mode == 'PREVIEW'

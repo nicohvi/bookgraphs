@@ -2,12 +2,20 @@
   %h1= @book.title
   %p= "By #{@book.author}"
 
-%section#graph_form{ data: { id:  @graph.id  } }
+= label_form_for @graph do |f|
+  %section.inputs
+    = f.input :name
+    = f.input :description
 
-  %section.mode
-    = switch({ on: 'preview', off: 'edit' }, { on: 'plug', off: 'wrench' })
+  %section.tools
+    %section.mode
+      = switch({ on: 'preview', off: 'edit' }, { on: 'plug', off: 'wrench' })
+    %section.save
+      = button 'save graph', 'paper-plane'
 
+%section.graph
   %svg#canvas
+  -# render the plot points form so it is attached to the DOM.
   = render 'plot_points/form'
 
   %section#plot_point

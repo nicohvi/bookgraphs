@@ -1,11 +1,5 @@
 module FormHelper
 
-  # def radio(value, icon, classes=nil)
-  #   content_tag(:section, class: "#{classes} radio-button", data: { value: value } ) do
-  #     content_tag(:i, "", class: "fa fa-#{icon}") + content_tag(:span, value)
-  #   end
-  # end
-
   def switch(values, icons)
     @content = content_tag(:section, class: "value #{values[:off]} active") {
       content_tag(:i, '', class: "fa fa-#{icons[:off]}") + content_tag(:span, values[:off])
@@ -13,6 +7,13 @@ module FormHelper
     @content <<  content_tag(:section, '', class: 'switch')
     @content << content_tag(:section, class: "value #{values[:on]}") do
       content_tag(:i, '', class: "fa fa-#{icons[:on]}") + content_tag(:span, values[:on])
+    end
+  end
+
+  def button(text, icon)
+    button_tag do
+      content_tag(:i, '', class: "fa fa-#{icon}") +
+      content_tag(:span, text)
     end
   end
 
@@ -27,7 +28,7 @@ module FormHelper
     include ActionView::Context
 
     def input(attribute, options={})
-      content_tag(:div, class: 'input') do
+      content_tag(:section, class: 'input') do
         label(attribute) + text_field(attribute, options)
       end
     end

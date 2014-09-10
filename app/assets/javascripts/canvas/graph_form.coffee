@@ -1,12 +1,13 @@
 class GraphForm
 
-  constructor: (@id) ->
-    @el = $('#graph_form')
+  constructor: (el) ->
+    @el = $(el)
     @canvas = $('#canvas')
     @plotPointBox = new PlotPointBox('#plot_point')
     @canvasManager = new CanvasManager('#canvas')
     @plotPointForm = new PlotPointForm('#plot_point_form')
     @switch = $('.switch')
+    @save = $('.save button')
     @initBindings()
     @initHandlers()
     @ENV = 'DEBUG'
@@ -37,6 +38,15 @@ class GraphForm
     @canvas.on 'contextmenu', (event) ->
       event.preventDefault()
 
+    @save.on 'click', =>
+      Q( $.post '/graphs', @_serializeForm()
+      ).then(
+        (html) =>
+          console.log 'success'
+        (jqXHR, status, errorThrown) =>
+          console.log 'error'
+      ).done()
+
   initHandlers: ->
     @plotPointForm.on 'plot_point:new', (plotPoint) =>
       @canvasManager.trigger 'plot_point', [plotPoint]
@@ -46,5 +56,11 @@ class GraphForm
 
     @canvasManager.on 'plot_point:hide', (event) =>
       @plotPointBox.timer() if event.toElement.tagName == 'svg'
+
+  _serializeForm: ->
+    plot_points = @canvasManager.getPlotPoints()
+    graph:
+      name: 'fecker'
+      plot_points: plot_points
 
 @GraphForm = GraphForm

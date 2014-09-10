@@ -1,0 +1,100 @@
+@import 'colors';
+@import 'bourbon';
+
+// ribbon
+
+.ribbon-wrapper {
+  width: 85px;
+  height: 85px;
+  overflow: hidden;
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  display: block;
+
+  .ribbon {
+    font-size: .8em;
+    font-weight: 800;
+    display: block;
+    text-align: center;
+    @include transform(rotate(45deg));
+    position: relative;
+    padding: 2px 7px;
+    left: -5px;
+    top: 15px;
+    width: 120px;
+    background-color: $fadedBlue;
+    color: white;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  }
+}
+
+// labels
+
+.notice {
+  font-family: 'open-sans';
+  font-size: 12px;
+  color: #fff;
+  text-transform: lowercase;
+  padding: 2px 4px;
+  border-radius: 4px;
+  margin-left: 10px;
+
+  &.notice-danger {
+    background: $fadedRed;
+  }
+}
+
+// switch
+
+.switch {
+  cursor: pointer;
+  background: $gray;
+  border-radius: 32px;
+  height: 32px;
+  width: 52px;
+  position: relative;
+  @include transition(all .3s ease-in-out);
+
+  &:before {
+    background: white;
+    border-radius: 32px;
+    content: '';
+    height: 28px;
+    width: 48px;
+    z-index: 1;
+    box-sizing: border-box;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    @include transition(all .3s ease);
+    @include transform(scale(1));
+  }
+
+  &:after {
+    background: white;
+    border-radius: 28px;
+    content: '';
+    height: 28px;
+    width: 28px;
+    z-index: 2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    @include transition(all .3s ease);
+  }
+
+  // switch on
+  &.on {
+    background: $fadedBlue;
+
+    &:before {
+      @include transform(scale(0));
+    }
+
+    &:after {
+      left: 22px;
+    }
+  }
+}
