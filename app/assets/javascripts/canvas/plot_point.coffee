@@ -39,4 +39,11 @@ class PlotPoint extends EventEmitter
       @.emit 'dragging'
       @update()
 
+  serialize: ->
+    plotPoint =
+      name: @name
+      desc: @desc
+      x: @x
+      y: @y
+
 @PlotPoint = PlotPoint

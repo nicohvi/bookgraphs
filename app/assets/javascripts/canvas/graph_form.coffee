@@ -31,25 +31,20 @@ class GraphForm
       @plotPointForm.trigger 'dialog:show', [coordinates]
 
     $(window).on 'keydown', (event) =>
-      if event.which == 27
+      if event.which == 27 # escape
         @plotPointForm.trigger 'dialog:close'
         @plotPointBox.hide()
 
     @canvas.on 'contextmenu', (event) ->
       event.preventDefault()
 
-    @save.on 'click', =>
-      Q( $.post '/graphs', @_serializeForm()
-      ).then(
-        (html) =>
-          console.log 'success'
-        (jqXHR, status, errorThrown) =>
-          console.log 'error'
-      ).done()
-
   initHandlers: ->
     @plotPointForm.on 'plot_point:new', (plotPoint) =>
       @canvasManager.trigger 'plot_point', [plotPoint]
+
+    @canvasManager.on 'plot_point:added', (plotPoint, index) =>
+      for attribute, value of plotPoint
+        @_addPlotPointField(attribute, value, index) # adding the DOM element
 
     @canvasManager.on 'plot_point:show', (plotPoint) =>
       @plotPointBox.show(plotPoint)
@@ -57,10 +52,17 @@ class GraphForm
     @canvasManager.on 'plot_point:hide', (event) =>
       @plotPointBox.timer() if event.toElement.tagName == 'svg'
 
+  _addPlotPointField: (attribute, value, index) ->
+    $('<input>')
+      .attr('type', 'hidden')
+      .attr('name', "graph[plot_points_attributes][#{index}][#{attribute}]")
+      .val(value)
+      .appendTo(@el)
+
   _serializeForm: ->
-    plot_points = @canvasManager.getPlotPoints()
-    graph:
-      name: 'fecker'
-      plot_points: plot_points
+    graph =
+      name: $('#graph_name').val()
+      description: $('#graph_description').val()
+      plot_points_attributes: @canvasManager.getPlotPoints()
 
 @GraphForm = GraphForm

@@ -51,7 +51,7 @@ class PlotPointForm extends EventEmitter
     $el.addClass('error')
     $('<span>')
       .addClass('notice notice-danger')
-      .text("can't be blank")
+      .text("can't be less than 5 characters")
       .appendTo($el.siblings('label'))
 
 @PlotPointForm = PlotPointForm

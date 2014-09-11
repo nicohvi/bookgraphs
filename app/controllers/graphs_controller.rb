@@ -6,15 +6,13 @@ class GraphsController < ApplicationController
   end
 
   def create
-    byebug
-    # book = Book.find(params[:book_id])
-    # @graph = book.graphs.create(graph_params)
-
-    # if @graph.valid?
-      # render partial: 'canvas'
-    # else
-      # render json: { error: @graph.errors.messages.to_json }, status: 401
-    # end
+    @book = Book.find(params[:book_id])
+    @graph = @book.graphs.create(graph_params)
+    if @graph.valid?
+      redirect_to @book
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -32,7 +30,8 @@ class GraphsController < ApplicationController
   private
 
   def graph_params
-    params.require(:graph).permit(:name, :description)
+    params.require(:graph)
+      .permit(:name, :description, :plot_points_attributes => [:name, :description, :x, :y])
   end
 
 end

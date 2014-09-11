@@ -27,8 +27,19 @@ class CanvasManager extends EventEmitter
     # timeline management
     @_addEdge(@plotPoints[@plotPoints.length-2], plotPoint) if @plotPoints.length > 1
 
+    @.emit 'plot_point:added', plotPoint.serialize(), @plotPoints.indexOf(plotPoint)
+
+  # only provide the necessary attributes for the plot point
   getPlotPoints: ->
-    @plotPoints
+    plotPoints = { }
+    for point, index in @plotPoints
+      plotPoint =
+        name: point.name
+        description: point.desc
+        x: point.x
+        y: point.y
+      plotPoints[index] = plotPoint
+    plotPoints
 
   _addHandler: (plotPoint) ->
     plotPoint.on 'dragging', =>

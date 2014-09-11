@@ -1,10 +1,10 @@
 module FormHelper
 
   def switch(values, icons)
-    @content = content_tag(:section, class: "value #{values[:off]} active") {
+    @content = content_tag(:section, class: "value #{values[:off]} active") do
       content_tag(:i, '', class: "fa fa-#{icons[:off]}") + content_tag(:span, values[:off])
-    }
-    @content <<  content_tag(:section, '', class: 'switch')
+    end
+    @content << content_tag(:section, '', class: 'switch')
     @content << content_tag(:section, class: "value #{values[:on]}") do
       content_tag(:i, '', class: "fa fa-#{icons[:on]}") + content_tag(:span, values[:on])
     end
@@ -29,7 +29,14 @@ module FormHelper
 
     def input(attribute, options={})
       content_tag(:section, class: 'input') do
-        label(attribute) + text_field(attribute, options)
+        if options[:optional]
+          @content = label(attribute) do
+            content_tag(:span, attribute.to_s.humanize) + content_tag(:span, ' (optional)', class: 'optional')
+          end
+        else
+          @content = label(attribute)
+        end
+        @content << text_field(attribute, options)
       end
     end
 

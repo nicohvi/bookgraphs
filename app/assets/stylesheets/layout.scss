@@ -56,6 +56,12 @@ header {
   }
 }
 
+label {
+  .optional {
+    font-size: .8em;
+  }
+}
+
 input, textarea {
   padding: 12px 10px 12px 10px;
   border: 1px solid rgba(0,0,0,0.12);

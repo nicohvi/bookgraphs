@@ -2,10 +2,10 @@
   %h1= @book.title
   %p= "By #{@book.author}"
 
-= label_form_for @graph do |f|
+= label_form_for [@book, @graph] do |f|
   %section.inputs
-    = f.input :name
-    = f.input :description
+    = f.input :name, optional: true
+    = f.input :description, optional: true
 
   %section.tools
     %section.mode

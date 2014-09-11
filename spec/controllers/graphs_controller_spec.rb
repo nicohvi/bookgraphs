@@ -4,21 +4,6 @@ describe GraphsController do
   let(:graph) { create :graph }
   let(:book) { graph.book }
 
-  it 'Creates an associated graph for a book through JSON' do
-    graph_params = { name: 'Tears shed', description: 'I cried during this book.' }
-
-    post :create, graph: graph_params, book_id: book
-    expect(assigns(:graph).name).to eq('Tears shed')
-    expect(assigns(:graph).description).to eq('I cried during this book.')
-    expect(response).to render_template '_canvas'
-  end
-
-  it 'Doesn\'t create an invalid graph' do
-    post :create, graph: { nothing: 'empty' }, book_id: book
-    parsed_body = JSON.parse(response.body)
-    expect(parsed_body['error']).to_not be_nil
-  end
-
   it 'Deletes an associated graph from a book' do
     delete :destroy, id: graph, book_id: book
     expect { Graph.find(graph) }.to raise_error

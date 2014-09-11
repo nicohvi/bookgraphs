@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
-  resources :graphs, concerns: :commentable, only: [:show, :destroy, :create] do
+  resources :graphs, concerns: :commentable, only: [:show, :destroy] do
     resources :plot_points, concerns: :commentable
   end
 

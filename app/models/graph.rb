@@ -4,6 +4,6 @@ class Graph < ActiveRecord::Base
   belongs_to :book
   has_many :plot_points, dependent: :destroy
 
-  validates_presence_of :book, :name, :description
+  accepts_nested_attributes_for :plot_points
 
 end
