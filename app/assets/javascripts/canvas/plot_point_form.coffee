@@ -17,7 +17,7 @@ class PlotPointForm extends EventEmitter
       $('.notice').remove()
       plot_point =
         name: @el.find('input[type=text]').val()
-        desc: @el.find('textarea').val()
+        description: @el.find('textarea').val()
         x: parseInt(@el.css 'left')
         y: parseInt(@el.css 'top')
 

@@ -1,0 +1,80 @@
+@import bourbon
+@import colors
+
++font-face(open-sans, "open-sans/OpenSans-Regular", normal, $asset-pipeline: true)
+
++font-face(norwester, "norwester/norwester", normal, $asset-pipeline: true)
+
++font-face(ostrich-sans, "ostrich-sans/ostrich-sans-regular", normal, $asset-pipeline: true)
+
++font-face(ostrich-sans-light, "ostrich-sans/ostrich-sans-light", normal, $asset-pipeline: true)
+
++font-face(ostrich-sans-bold, "ostrich-sans/ostrich-sans-black", normal, $asset-pipeline: true)
+
+$black: rgba(0, 0, 0, 0.8)
+
+body
+  background: $white
+  color: $black
+  font-family: 'open-sans', 'sans serif'
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+  margin: 0
+  font-size: 16px
+
+h1
+  margin: 30px
+  font-size: 6em
+  font-family: 'ostrich-sans-light'
+  text-transform: uppercase
+  text-align: center
+
+header
+  background: $darkGray
+  border-bottom: 1px solid #ddd
+  display: flex
+  align-items: center
+  justify-content: center
+  a
+    margin-left: 15px
+    color: $white
+
+.hero-intro
+  background: $fadedGreen
+  padding: 50px 0
+  display: flex
+  flex-direction: column
+  h1
+    text-align: left
+    margin-bottom: 0
+  p
+    padding: 0 60px
+    margin: 0
+
+label
+  .optional
+    font-size: .8em
+
+input, textarea
+  padding: 12px 10px 12px 10px
+  border: 1px solid rgba(0, 0, 0, 0.12)
+  flex: 1
+  font-size: 1em
+  +transition(all 0.2s ease-in-out)
+  &.error
+    border: 1px solid $fadedRed
+
+form
+  flex-direction: column
+
+button
+  font-size: 1em
+  font-family: 'open-sans'
+  background: transparent
+  cursor: pointer
+  +transition(all 0.3s ease)
+  border: 1px solid $gray
+  border-radius: 3px
+  padding: 10px
+  &:hover
+    background: $offWhite

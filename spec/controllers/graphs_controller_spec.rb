@@ -11,8 +11,6 @@ describe GraphsController do
   end
 
   describe 'Plot points' do
-    before { 5.times { graph.plot_points << create(:plot_point) } }
-
     it 'Lists all plot points associated with a graph' do
       get :show, book_id: book, id: graph
       expect(assigns(:graph).plot_points.length).to eq(5)

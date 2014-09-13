@@ -59,10 +59,4 @@ class GraphForm
       .val(value)
       .appendTo(@el)
 
-  _serializeForm: ->
-    graph =
-      name: $('#graph_name').val()
-      description: $('#graph_description').val()
-      plot_points_attributes: @canvasManager.getPlotPoints()
-
 @GraphForm = GraphForm

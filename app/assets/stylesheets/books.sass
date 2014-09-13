@@ -1,0 +1,66 @@
+@import colors
+@import bourbon
+
+// index
+
+#books
+  display: flex
+  flex-direction: column
+
+.book, #book
+  display: flex
+  flex: 1
+  margin-bottom: 30px
+  padding: 30px
+
+#book .meta
+  flex-direction: row
+
+.title
+  font-size: 26px
+  margin-top: 20px
+
+aside
+  width: 20%
+
+.book meta
+  display: flex
+  flex: 1
+  flex-direction: column
+
+ul
+  flex: 1
+
+li
+  margin-bottom: 15px
+
+.info
+  margin-left: 15px
+
+.book:not(:last-of-type)
+  border-bottom: 1px solid #ddd
+
+.tools a
+  opacity: .6
+  +transition(all 0.2s ease-in-out)
+  &:hover
+    opacity: 1
+
+.image
+  margin-bottom: 15px
+  display: flex
+  input
+    border: none
+  .cover
+    display: flex
+    flex-direction: column
+    img
+      margin-left: 15px
+
+.inputs
+  display: flex
+  flex: 1
+  section
+    flex: 1
+    &.right
+      margin-left: 25px

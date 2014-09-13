@@ -2,7 +2,7 @@ class PlotPoint extends EventEmitter
 
   constructor: (options, canvas) ->
     @name = options.name
-    @desc = options.desc
+    @description = options.description
     @x = options.x
     @y = options.y
     @node = canvas.circle options.x, options.y, 10
@@ -13,10 +13,6 @@ class PlotPoint extends EventEmitter
     @node.attr
       fill: '#3984a7'
       'fill-opacity': 0.8
-
-    # @node.mousedown (event) =>
-      # if event.which == 3 # right click
-        # @.emit 'menu' # show custom context menu on right-click
 
   update: ->
     boundingBox = @node.getBBox()
@@ -38,12 +34,5 @@ class PlotPoint extends EventEmitter
     eve.on "snap.drag.move.#{@node.id}", =>
       @.emit 'dragging'
       @update()
-
-  serialize: ->
-    plotPoint =
-      name: @name
-      desc: @desc
-      x: @x
-      y: @y
 
 @PlotPoint = PlotPoint

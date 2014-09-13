@@ -13,14 +13,14 @@ class PlotPointBox extends EventEmitter
 
   show: (plotPoint) ->
     @el.find('.name').text(plotPoint.name)
-    if plotPoint.desc.length != 0
+    if plotPoint.description.length != 0
       @el.find('.desc').show()
-      @el.find('.desc').text(plotPoint.desc)
+      @el.find('.desc').text(plotPoint.description)
     else
       @el.find('.desc').hide()
     @el.css
       left: plotPoint.x
-      top: plotPoint.y 
+      top: plotPoint.y
     @el.show()
 
   timer: ->

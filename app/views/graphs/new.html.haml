@@ -14,7 +14,7 @@
       = button 'save graph', 'paper-plane'
 
 %section.graph
-  %svg#canvas
+  %svg#canvas{ class: ('error' if @graph.errors)}
   -# render the plot points form so it is attached to the DOM.
   = render 'plot_points/form'
 
