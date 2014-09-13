@@ -22,6 +22,7 @@ class GraphForm
       @canvasManager.trigger(value)
 
     @canvas.on 'dblclick', (event) =>
+      @canvas.removeClass('error')
       return false unless @canvasManager.mode == 'EDIT'
       $canvas = @canvas.offset()
       coordinates =

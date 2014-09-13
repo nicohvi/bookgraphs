@@ -14,6 +14,8 @@
       = button 'save graph', 'paper-plane'
 
 %section.graph
+  - if @graph.errors
+    %span.notice.notice-danger.big= t('graph.error')
   %svg#canvas{ class: ('error' if @graph.errors)}
   -# render the plot points form so it is attached to the DOM.
   = render 'plot_points/form'

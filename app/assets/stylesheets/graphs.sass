@@ -6,34 +6,47 @@
   display: flex
   flex-direction: column
   padding: 25px 45px
+
   .inputs
     flex: 1
+
   .input
     flex-direction: column
     flex: 1
     margin: 25px 0
+
     label
       margin-bottom: 10px
+
     &:first-of-type
       margin-right: 15px
+
   .save
     justify-self: flex-end
+
   .mode
     align-items: center
     flex: 1
     display: flex
+
     section
       margin-right: 15px
       align-items: center
       +transition(all 0.3s ease)
+
       &.value
         opacity: .6
+
         &.active
           opacity: 1
 
 .graph
   position: relative
+  flex-direction: column
 
 #canvas
   flex: 1
   min-height: 600px
+
+  &.error
+    background: rgba(218, 76, 67, .1)

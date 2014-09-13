@@ -11,6 +11,7 @@
   top: -1px
   right: -1px
   display: block
+
   .ribbon
     font-size: .8em
     font-weight: 800
@@ -36,8 +37,16 @@
   padding: 2px 4px
   border-radius: 4px
   margin-left: 10px
+
   &.notice-danger
     background: $fadedRed
+
+  &.big
+    display: inline-flex
+    width: 360px
+    justify-content: center
+    margin: 0 0 10px 45px
+    padding: 5px
 
 // switch
 
@@ -49,6 +58,7 @@
   width: 52px
   position: relative
   +transition(all 0.3s ease-in-out)
+
   &:before
     background: white
     border-radius: 32px
@@ -62,6 +72,7 @@
     left: 2px
     +transition(all 0.3s ease)
     +transform(scale(1))
+
   &:after
     background: white
     border-radius: 28px
@@ -74,10 +85,13 @@
     top: 2px
     left: 2px
     +transition(all 0.3s ease)
+
   // switch on
   &.on
     background: $fadedBlue
+
     &:before
       +transform(scale(0))
+
     &:after
       left: 22px
