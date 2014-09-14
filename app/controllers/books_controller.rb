@@ -27,7 +27,6 @@ class BooksController < ApplicationController
   end
 
   def update
-    byebug
     @book = Book.find(params[:id])
     if @book.update(book_params)
       redirect_to @book

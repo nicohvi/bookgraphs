@@ -1,6 +1,4 @@
-%section.book
-  %aside
-    = image_tag(book.cover)
+%section.book{ style: "background-image: url(#{book.cover})"}
   %section.meta
     %span.title
       = link_to book.title, book
