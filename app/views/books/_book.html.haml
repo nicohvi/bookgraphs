@@ -1,9 +1,11 @@
 %section.book{ style: "background-image: url(#{book.cover})"}
+  = link_to book do
+    %h1.title= book.title
   %section.meta
-    %span.title
-      = link_to book.title, book
-    %span.author= "by #{book.author}"
-
-  %section.tools
-    = link_to edit_book_path(book) do
-      %i.fa.fa-wrench
+    %span.author
+      %i.fa.fa-male
+      = book.author
+    -# TODO: admin tools
+    %span.tools
+      = link_to edit_book_path(book) do
+        %i.fa.fa-wrench

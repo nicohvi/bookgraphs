@@ -11,37 +11,48 @@
   display: flex
   flex: 1
   padding: 30px
-  position: relative
   color: $white
-  +transition(all .3s ease)
-  opacity: .8
-
-  &:hover
-    opacity: 1
 
   a
     color: $white
+
+  .title
+    font-family: 'ostrich-sans-light'
+    font-size: 7em
+    font-weight: 700
 
   &:hover
     opacity: 1
 
 .book
   height: 230px
+  overflow: hidden
+  background-side: cover
+  opacity: .8
+  display: block
+  +transition(all .3s ease)
+  position: relative
+  background-size: cover
 
-#book .meta
-  flex-direction: row
+  .meta
+    +transition(all .3s ease-in-out)
+    position: absolute
+    left: 0
+    right: 0
+    bottom: 0
+    padding: 15px 35px
+    background: rgba(0, 0, 0, .8)
+    +transform(translateY(230px))
+    justify-content: space-between
 
-.title
-  font-size: 26px
-  margin-top: 20px
+  &:hover
+    opacity: 1
+
+    .meta
+      +transform(translateY(0))
 
 aside
   width: 20%
-
-.book meta
-  display: flex
-  flex: 1
-  flex-direction: column
 
 ul
   flex: 1
@@ -51,12 +62,6 @@ li
 
 .info
   margin-left: 15px
-
-.tools a
-  opacity: .6
-  +transition(all 0.2s ease-in-out)
-  &:hover
-    opacity: 1
 
 .image
   margin-bottom: 15px
@@ -68,6 +73,7 @@ li
   .cover
     display: flex
     flex-direction: column
+
     img
       margin-left: 15px
 
