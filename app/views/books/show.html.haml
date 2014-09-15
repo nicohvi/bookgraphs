@@ -1,12 +1,14 @@
 %section.hero-intro
-  %h1= @book.title
+  %section.image{ style: "background-image: url(#{@book.cover})"}
+  %section.blur{ style: "background-image: url(#{image_path('arya_blur.png')})"}
+
+  %section.title-container
+    %h1.title= @book.title
 
 %section#book
 
   %section#graph
 
-  %aside
-    = image_tag(@book.cover.url)
   %section.meta
     %ul
       %li
@@ -20,6 +22,6 @@
         .label Length
         .info= @book.length
 
-%section
-  = link_to new_book_graph_path(@book) do
-    %i.fa.fa-line-chart.fa-2x
+  %section
+    = link_to new_book_graph_path(@book) do
+      %i.fa.fa-line-chart.fa-2x

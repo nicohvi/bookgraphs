@@ -1,11 +1,37 @@
 !!!
 %html
-%head
-  %title Bookgraphs
-  = stylesheet_link_tag 'application'
-  = javascript_include_tag 'application'
-  = csrf_meta_tags
-%body
-  %header
-    = render 'sessions/header'
-  = yield
+  %head
+    %title Bookgraphs
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    = javascript_include_tag 'stats' if Rails.env.development?
+    = csrf_meta_tags
+  %body
+    %header
+      = render 'sessions/header'
+
+    %section#main
+      = yield
+
+  - if Rails.env.development?
+    :javascript
+      var stats = new Stats();
+      stats.setMode(0); // 0: fps, 1: ms
+
+      // Align top-left
+      stats.domElement.style.position = 'fixed';
+      stats.domElement.style.left = '0px';
+      stats.domElement.style.top = '0px';
+      stats.domElement.style.zIndex = '5';
+
+      document.body.appendChild( stats.domElement );
+
+      setInterval( function () {
+
+          stats.begin();
+
+          // your code goes here
+
+          stats.end();
+
+      }, 1000 / 60 );

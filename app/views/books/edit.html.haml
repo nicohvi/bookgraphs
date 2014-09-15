@@ -1,1 +1,6 @@
-= render 'form', book: @book
+%section.hero-intro{style: "background-image: url(#{@book.cover})"}
+  %section.title-container
+    %h1.title= @book.title
+
+%section#book
+  = render 'form', book: @book

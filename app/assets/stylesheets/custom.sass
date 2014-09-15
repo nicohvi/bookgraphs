@@ -95,3 +95,25 @@
 
     &:after
       left: 22px
+
+// blur
+
+.hero-intro
+  position: relative
+  height: 100vh
+  z-index: 1
+  top: 0
+  left: 0
+  align-items: center
+
+  .blur, .image
+    position: fixed
+    width: 100%
+    min-height: 100vh
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: center center
+    +transform(translate3d(0,0,0))
+
+  .image
+    opacity: 1

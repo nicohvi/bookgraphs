@@ -7,22 +7,38 @@
   display: flex
   flex-direction: column
 
-.book, #book
-  display: flex
+.title-container
+  background: rgba(0,0,0,.3)
+  position: fixed
   flex: 1
-  padding: 30px
+  z-index: 2
+  justify-content: center
+  width: 100%
+
+#book
+  background-size: cover
+  background-repeat: no-repeat
+  background-position: center center
+  background-attachment: fixed
+  flex-direction: column
+  position: relative
+  z-index: 2
+  background: $white
+
+  section
+    flex-direction: inherit
+
+  &.black
+    +filter(grayscale(100%))
+
+  .book-info
+    background: $white
+
+.title
+  font-family: 'ostrich-sans-light'
+  font-size: 7em
+  font-weight: 700
   color: $white
-
-  a
-    color: $white
-
-  .title
-    font-family: 'ostrich-sans-light'
-    font-size: 7em
-    font-weight: 700
-
-  &:hover
-    opacity: 1
 
 .book
   height: 230px
@@ -64,7 +80,6 @@ li
   margin-left: 15px
 
 .image
-  margin-bottom: 15px
   display: flex
 
   input

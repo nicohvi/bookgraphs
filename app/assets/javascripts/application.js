@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require_tree ./lib
 //= require jquery_ujs
 //= require q
+//= require books
 //

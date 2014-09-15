@@ -30,5 +30,7 @@ module Bookgraphs
       }
     }
 
+    Rails.application.config.assets.precompile += %w( stats.js )
+
   end
 end
