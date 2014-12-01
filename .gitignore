@@ -18,5 +18,3 @@
 .DS_STORE
 */*.DS_STORE
 
-# Ignore secrets
-config/secrets.yml

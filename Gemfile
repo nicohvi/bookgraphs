@@ -23,7 +23,7 @@ gem 'aws-sdk'
 
 group :test, :development do
   gem 'spring'
-  gem 'byebug', group: [:development, :test]
+  gem 'byebug'
 end
 
 group :test do
